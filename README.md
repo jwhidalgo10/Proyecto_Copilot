@@ -75,4 +75,38 @@ Define el flujo de comunicación entre componentes (quién llama a quién) y mue
 
 No escribas código ABAP ni firmes métodos exactos.
 
+# Prompt 4 - Identificación de clases con nombres propuestos
+
+Con base en la arquitectura OO/SOLID definida para el programa Z de auditoría y corrección de Business Partners, necesito que propongas nombres concretos para las clases e interfaces siguiendo convención ABAP (`ZCL_*` / `ZIF_*`), manteniéndolo a nivel de diseño (sin implementación).
+
+### Entrega
+
+Lista de clases propuestas (con nombre sugerido) y para cada una:
+
+- Responsabilidad principal (1–2 líneas)
+- Entradas que consume
+- Salidas que produce
+- Colaboradores (qué componentes llama)
+- Métodos públicos sugeridos (solo nombres + propósito, sin firmas técnicas)
+
+Asegúrate de cubrir estas responsabilidades mínimas:
+
+- Lectura selectiva de BPs desde `BUT000`
+- Validación organizaciones (NIT)
+- Validación personas (DPI/CUI)
+- Validación contactos (email/teléfono)
+- Orquestación/coordinación del proceso
+- Construcción de resultados con semáforos (Correcto/Advertencia/Error)
+- Actualización controlada vía BAPI (conceptual)
+- Log/auditoría de cambios (SLG1 recomendado)
+
+### Convención de nombres
+
+- Prefijo común sugerido: `ZBP_` o `ZCL_BP_` (elige uno y justifica)
+- Interfaces: `ZIF_BP_*`
+- Excepción de dominio (si aplica): `ZCX_BP_*`
+
+Indica también un paquete sugerido (ej. `ZFI_BP_AUDIT` o similar) y una estructura de componentes dentro del paquete.
+
+
 
