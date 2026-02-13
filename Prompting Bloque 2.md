@@ -297,7 +297,7 @@ Clase completa compilable.
 
 ---
 
-# Resultado Final Esperado
+## Resultado Final Esperado
 
 Arquitectura modular, desacoplada y limpia:
 
@@ -313,7 +313,7 @@ Aplicando:
 - Sin dependencias innecesarias
 
 
-## Interfaz de Validación de Business Partners
+# Interfaz de Validación de Business Partners
 
 **Contexto**
 
@@ -387,7 +387,7 @@ Todas las clases validadoras deben implementar esta interfaz y usar exactamente 
 
 ---
 
-## Interfaz del Procesador Principal
+# Interfaz del Procesador Principal
 
 **Contexto**
 
