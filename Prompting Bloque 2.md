@@ -311,3 +311,79 @@ Aplicando:
 - Clean ABAP
 - ABAP 7.4+
 - Sin dependencias innecesarias
+
+
+## Interfaces
+
+El proyecto de validación de Business Partners ya tiene varias clases que implementan reglas específicas (NIT, DPI, Contacto). Actualmente existen definiciones de tipos dispersas en clases, lo cual genera acoplamiento y errores de compatibilidad.
+
+Se requiere centralizar el modelo de datos del bloque en una interfaz común.
+
+---
+
+## Objetivo
+
+Crear una interfaz pública que:
+
+- Declare los tipos canónicos del bloque.
+- Defina el contrato común de validación.
+
+---
+
+## Sintaxis / Restricciones Técnicas
+
+- ABAP OO, interfaz pura.
+- Los tipos deben declararse en la sección pública de la interfaz.
+- No declarar atributos.
+- No implementar lógica.
+
+---
+
+## Tipos Requeridos
+
+La interfaz debe definir:
+
+### 1. Tipo estructura BP
+Debe incluir los siguientes campos:
+- partner
+- tipo BP
+- nit
+- dpi
+- email
+- phone
+
+### 2. Tabla de BPs
+
+### 3. Tipo estructura Issue
+Debe incluir los siguientes campos:
+- partner
+- field_name
+- severity
+- message
+- original_value
+- proposed_value
+
+### 4. Tabla de Issues
+
+---
+
+## Método Requerido
+
+Debe declarar un método de validación que:
+
+- Reciba un BP.
+- Devuelva tabla de issues.
+
+---
+
+## Arquitectura
+
+Todas las clases validadoras deben implementar esta interfaz y usar exactamente estos tipos.
+
+---
+
+## Restricciones
+
+- No redefinir tipos en las clases.
+- No agregar constantes innecesarias.
+- No incluir lógica en la interfaz.
