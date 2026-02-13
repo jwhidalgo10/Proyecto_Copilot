@@ -321,7 +321,6 @@ El proyecto de validación de Business Partners ya tiene varias clases que imple
 
 Se requiere centralizar el modelo de datos del bloque en una interfaz común.
 
----
 
 **Objetivo**
 
@@ -330,7 +329,6 @@ Crear una interfaz pública que:
 - Declare los tipos canónicos del bloque.
 - Defina el contrato común de validación.
 
----
 
 **Sintaxis / Restricciones Técnicas**
 
@@ -339,7 +337,6 @@ Crear una interfaz pública que:
 - No declarar atributos.
 - No implementar lógica.
 
----
 
 **Tipos Requeridos**
 
@@ -367,7 +364,6 @@ Debe incluir los siguientes campos:
 
 **4. Tabla de Issues**
 
----
 
 **Método Requerido**
 
@@ -376,13 +372,12 @@ Debe declarar un método de validación que:
 - Reciba un BP.
 - Devuelva tabla de issues.
 
----
+
 
 **Arquitectura**
 
 Todas las clases validadoras deben implementar esta interfaz y usar exactamente estos tipos.
 
----
 
 **Restricciones**
 
@@ -390,6 +385,7 @@ Todas las clases validadoras deben implementar esta interfaz y usar exactamente 
 - No agregar constantes innecesarias.
 - No incluir lógica en la interfaz.
 
+---
 
 ## Interfaz del Procesador Principal
 
@@ -397,20 +393,19 @@ Todas las clases validadoras deben implementar esta interfaz y usar exactamente 
 
 Existe una clase que coordina lectura, validación y consolidación. Para mejorar el desacoplamiento, se requiere definir su contrato formal.
 
----
 
 **Objetivo**
 
 Crear una interfaz para el componente procesador principal.
 
----
+
 
 **Sintaxis / Restricciones Técnicas**
 
 - Reutilizar los tipos definidos en la interfaz de validación.
 - No redefinir estructuras.
 
----
+
 
 **Método Requerido**
 
@@ -420,13 +415,13 @@ Debe declarar un método que:
 - Devuelva tabla ALV.
 - Devuelva tabla de issues.
 
----
+
 
 **Arquitectura**
 
 La clase procesadora existente debe implementar esta interfaz.
 
----
+
 
 **Restricciones**
 
