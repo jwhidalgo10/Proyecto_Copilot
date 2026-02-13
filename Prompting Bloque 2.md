@@ -30,6 +30,7 @@ Cada clase debe respetar SRP.
 No inventar objetos nuevos.
 No SELECT dentro de LOOP.
 No cambiar firmas públicas existentes
+
 ---
 
 # ZCL_BP_READER
