@@ -18,12 +18,18 @@ Restricciones obligatorias del diseño:
 
 - ABAP 7.4+
 - Sin SELECT *
-- Sin SELECT dentro de loops
 - Early return
 - Métodos pequeños y claros
-- No usar short form inválido (-> solo instancia, => solo estático)
 - Código compilable
 
+Reutilizar los tipos ya definidos en el dueño del modelo (clase lectora o clase central de tipos).
+No redefinir ty_bp o ty_issue en cada clase.
+
+Cada clase debe respetar SRP.
+
+No inventar objetos nuevos.
+No SELECT dentro de LOOP.
+No cambiar firmas públicas existentes
 ---
 
 # ZCL_BP_READER
@@ -37,7 +43,7 @@ Actúa como ABAP senior en S/4HANA (7.4+).
 Crea desde cero la clase ZCL_BP_READER (DEFINITION + IMPLEMENTATION).
 
 Requerimiento:
-
+Existe una clase responsable únicamente de obtener datos desde la tabla simulada de BUT000.
 - Entrada: ty_sel con partner_range TYPE RANGE OF bu_partner.
 - Salida: tt_bp con estructura:
   - partner
@@ -59,6 +65,7 @@ Reglas:
 - WHERE partner IN @is_sel-partner_range.
 - No loops innecesarios.
 - Sintaxis ABAP 7.4+.
+- Responsabilidad única: acceso y mapeo.
 
 Entrega:
 Clase completa lista para activar.
@@ -73,6 +80,11 @@ Validar NIT Guatemala con algoritmo módulo 11.
 ## Prompt
 
 Crea desde cero la clase ZCL_BP_NITVALIDATOR.
+
+Implementar una validación coherente y mantenible que distinga entre:
+- Valor vacío
+- Formato incorrecto
+- Valor corregible por normalización
 
 Interfaz:
 
@@ -96,13 +108,8 @@ Reglas:
 
 Restricciones:
 
-- Sin regex.
-- Métodos pequeños:
-  normalize,
-  is_format_ok,
-  calc_check_digit,
-  build_issue.
-- Conversión numérica segura (sin char * int implícito).
+- No redefinir tipos.
+- No mezclar validación con persistencia.
 
 Entrega:
 Clase completa compilable.
@@ -118,6 +125,11 @@ Validar DPI/CUI Guatemala.
 
 Crea desde cero la clase ZCL_BP_DPIVALIDATOR.
 
+- Debe diferenciar entre:
+- Vacío
+- Formato inválido
+
+Valor normalizado válido
 Interfaz:
 
 - ty_bp: partner, dpi.
