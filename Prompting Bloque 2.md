@@ -313,7 +313,9 @@ Aplicando:
 - Sin dependencias innecesarias
 
 
-## Interfaces
+## Interfaz de Validación de Business Partners
+
+**Contexto**
 
 El proyecto de validación de Business Partners ya tiene varias clases que implementan reglas específicas (NIT, DPI, Contacto). Actualmente existen definiciones de tipos dispersas en clases, lo cual genera acoplamiento y errores de compatibilidad.
 
@@ -321,7 +323,7 @@ Se requiere centralizar el modelo de datos del bloque en una interfaz común.
 
 ---
 
-## Objetivo
+**Objetivo**
 
 Crear una interfaz pública que:
 
@@ -330,7 +332,7 @@ Crear una interfaz pública que:
 
 ---
 
-## Sintaxis / Restricciones Técnicas
+**Sintaxis / Restricciones Técnicas**
 
 - ABAP OO, interfaz pura.
 - Los tipos deben declararse en la sección pública de la interfaz.
@@ -339,11 +341,11 @@ Crear una interfaz pública que:
 
 ---
 
-## Tipos Requeridos
+**Tipos Requeridos**
 
 La interfaz debe definir:
 
-### 1. Tipo estructura BP
+**1. Tipo estructura BP**  
 Debe incluir los siguientes campos:
 - partner
 - tipo BP
@@ -352,9 +354,9 @@ Debe incluir los siguientes campos:
 - email
 - phone
 
-### 2. Tabla de BPs
+**2. Tabla de BPs**
 
-### 3. Tipo estructura Issue
+**3. Tipo estructura Issue**  
 Debe incluir los siguientes campos:
 - partner
 - field_name
@@ -363,11 +365,11 @@ Debe incluir los siguientes campos:
 - original_value
 - proposed_value
 
-### 4. Tabla de Issues
+**4. Tabla de Issues**
 
 ---
 
-## Método Requerido
+**Método Requerido**
 
 Debe declarar un método de validación que:
 
@@ -376,14 +378,57 @@ Debe declarar un método de validación que:
 
 ---
 
-## Arquitectura
+**Arquitectura**
 
 Todas las clases validadoras deben implementar esta interfaz y usar exactamente estos tipos.
 
 ---
 
-## Restricciones
+**Restricciones**
 
 - No redefinir tipos en las clases.
 - No agregar constantes innecesarias.
 - No incluir lógica en la interfaz.
+
+
+## Interfaz del Procesador Principal
+
+**Contexto**
+
+Existe una clase que coordina lectura, validación y consolidación. Para mejorar el desacoplamiento, se requiere definir su contrato formal.
+
+---
+
+**Objetivo**
+
+Crear una interfaz para el componente procesador principal.
+
+---
+
+**Sintaxis / Restricciones Técnicas**
+
+- Reutilizar los tipos definidos en la interfaz de validación.
+- No redefinir estructuras.
+
+---
+
+**Método Requerido**
+
+Debe declarar un método que:
+
+- Reciba estructura de selección.
+- Devuelva tabla ALV.
+- Devuelva tabla de issues.
+
+---
+
+**Arquitectura**
+
+La clase procesadora existente debe implementar esta interfaz.
+
+---
+
+**Restricciones**
+
+- No lógica en la interfaz.
+- No tipos duplicados.
