@@ -8,6 +8,7 @@ Este documento contiene las plantillas maestras para automatizar la documentaci�
 **Uso:** Copiar este prompt junto con el código de la definición de la clase para generar los comentarios técnicos estándar.
 
 ### Prompt:
+```text
 " PROMPT (ABAPDoc) – Plantilla breve para documentar definición de clase (solo PUBLIC SECTION)
 "
 " Genera ABAPDoc SOLO en la sección DEFINITION de esta clase (no tocar IMPLEMENTATION).
@@ -28,12 +29,13 @@ Este documento contiene las plantillas maestras para automatizar la documentaci�
 " Entregable:
 " - Devuelve la sección CLASS ... DEFINITION completa, con ABAPDoc insertado arriba de la clase y de cada método público.
 
+```
 ---
 
 ## 2. Prompt para ABAP Unit (ZIF_BP_VALIDATOR)
-**Uso:** Copiar este prompt junto con el código completo del validador (Definition e Implementation) para obtener la clase de test lista para usar.
 
 ### Prompt:
+```text
 " PROMPT (ABAP Unit) – Plantilla genérica para generar tests de clases validadoras (ZIF_BP_VALIDATOR)
 "
 " Genera una clase ABAP Unit completa para probar ESTA clase validadora que implementa ZIF_BP_VALIDATOR.
@@ -83,3 +85,4 @@ Este documento contiene las plantillas maestras para automatizar la documentaci�
 " - Mantén nombres de tests claros y consistentes.
 " - Si el validador produce issues para múltiples fields, crea tests separados por field.
 " - Si un método privado existe pero no afecta validate, no lo pruebes.
+```
